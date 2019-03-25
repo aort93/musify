@@ -3,6 +3,4 @@ class Artist < ApplicationRecord
   has_many :festivals, through: :performances
 
 
-  def
-  end
 end

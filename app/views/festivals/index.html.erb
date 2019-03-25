@@ -24,7 +24,7 @@
         <td><img src="<%= festival.image %>"></td>
         <td><%= festival.age_limit %></td>
         <td>$<%= festival.ticket_price %></td>
-        <td><%= festival.late_night? %></td>
+        <td><% if festival.late_night? %><%="Yes"%><%else%><%="No"%><%end%></td>
         <td><%= link_to 'Show', festival %></td>
         <td><%= link_to 'Edit', edit_festival_path(festival) %></td>
         <td><%= link_to 'Destroy', festival, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -7,17 +7,12 @@ class Festival < ApplicationRecord
   has_many :venues, through: :festival_venues
 
 
-  # def artists_by_tier
-  #   artist_performance = self.performances.select do |performance|
-  #     (performance.artist_id == artist.id) && (performance.festival_id == self.id)
-  #   end
-
-
-
-
-      # self.artists.sort_by do |artist|
-      #   artist.Performance.find_by(id: )
-      # end
-  # end
+  def artist_ranker
+    self.performances.sort_by do |performance|
+      performance.tier
+    end.map do |performance|
+      performance.artist.name
+    end
+  end
 
 end
