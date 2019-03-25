@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  festival_id: 1
+  artist_id: 1
+  tier: 1
+
+two:
+  festival_id: 1
+  artist_id: 1
+  tier: 1

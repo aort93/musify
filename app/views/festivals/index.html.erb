@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Festivals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Year</th>
+      <th>Description</th>
+      <th>Age limit</th>
+      <th>Ticket price</th>
+      <th>Late night?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @festivals.each do |festival| %>
+      <tr>
+        <td><%= festival.brand %></td>
+        <td><%= festival.year %></td>
+        <td><%= festival.description %></td>
+        <td><img src="<%= festival.image %>"></td>
+        <td><%= festival.age_limit %></td>
+        <td>$<%= festival.ticket_price %></td>
+        <td><%= festival.late_night? %></td>
+        <td><%= link_to 'Show', festival %></td>
+        <td><%= link_to 'Edit', edit_festival_path(festival) %></td>
+        <td><%= link_to 'Destroy', festival, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "New", new_festival_path %>

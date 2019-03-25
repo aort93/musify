@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  state: MyString
+  image: MyString
+  venue_capacity: 1
+
+two:
+  name: MyString
+  state: MyString
+  image: MyString
+  venue_capacity: 1

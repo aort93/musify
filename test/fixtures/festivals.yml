@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  year: MyString
+  description: MyText
+  image: MyString
+  age_limit: 1
+  ticket_price: 1.5
+  late_ni: MyString
+
+two:
+  brand: MyString
+  year: MyString
+  description: MyText
+  image: MyString
+  age_limit: 1
+  ticket_price: 1.5
+  late_ni: MyString

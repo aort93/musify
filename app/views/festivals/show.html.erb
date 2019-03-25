@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<img src="<%= @festival.image %>">
+
+<p>
+  <strong>Brand:</strong>
+  <%= @festival.brand %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @festival.year %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @festival.description %>
+</p>
+
+
+
+<p>
+  <strong>Age limit:</strong>
+  <%= @festival.age_limit %>
+</p>
+
+<p>
+  <strong>Ticket price:</strong>
+  <%= @festival.ticket_price %>
+</p>
+
+<p style= "display: inline">
+  <strong>Late night?:</strong>
+  <% if @festival.late_night? %>
+    <p style= "display: inline">Yes</p>
+  <% else %>
+    <p style= "display: inline">No</p>
+  <% end  %>
+</p>
+
+<%= link_to 'Edit', edit_festival_path(@festival) %> |
+<%= link_to 'Back', festivals_path %>
+
+<!-- <div>
+  <ul>
+  <% sorted = @festival.artists.sort_by do |artist|%>
+  <% artist.performance %>
+  <% end %>
+
+  <% sorted.each do |artist| %>
+    <li><%= artist.name %></li>
+  <% end %>
+  </ul>
+</div> -->
