@@ -69,6 +69,6 @@ class FestivalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def festival_params
-      params.require(:festival).permit(:brand, :year, :description, :image, :age_limit, :ticket_price, :late_ni)
+      params.require(:festival).permit(:brand, :year, :description, :image, :age_limit, :ticket_price, :late_night?)
     end
 end

@@ -18,7 +18,7 @@ class FestivalsTest < ApplicationSystemTestCase
     fill_in "Brand", with: @festival.brand
     fill_in "Description", with: @festival.description
     fill_in "Image", with: @festival.image
-    fill_in "Late ni", with: @festival.late_ni
+    fill_in "Late ni", with: @festival.late_night?
     fill_in "Ticket price", with: @festival.ticket_price
     fill_in "Year", with: @festival.year
     click_on "Create Festival"
@@ -35,7 +35,7 @@ class FestivalsTest < ApplicationSystemTestCase
     fill_in "Brand", with: @festival.brand
     fill_in "Description", with: @festival.description
     fill_in "Image", with: @festival.image
-    fill_in "Late ni", with: @festival.late_ni
+    fill_in "Late ni", with: @festival.late_night?
     fill_in "Ticket price", with: @festival.ticket_price
     fill_in "Year", with: @festival.year
     click_on "Update Festival"

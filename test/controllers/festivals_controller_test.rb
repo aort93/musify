@@ -17,7 +17,7 @@ class FestivalsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create festival" do
     assert_difference('Festival.count') do
-      post festivals_url, params: { festival: { age_limit: @festival.age_limit, brand: @festival.brand, description: @festival.description, image: @festival.image, late_ni: @festival.late_ni, ticket_price: @festival.ticket_price, year: @festival.year } }
+      post festivals_url, params: { festival: { age_limit: @festival.age_limit, brand: @festival.brand, description: @festival.description, image: @festival.image, late_night?: @festival.late_night?, ticket_price: @festival.ticket_price, year: @festival.year } }
     end
 
     assert_redirected_to festival_url(Festival.last)
