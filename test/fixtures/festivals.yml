@@ -7,7 +7,7 @@ one:
   image: MyString
   age_limit: 1
   ticket_price: 1.5
-  late_ni: MyString
+  late_night?: MyString
 
 two:
   brand: MyString
@@ -16,4 +16,4 @@ two:
   image: MyString
   age_limit: 1
   ticket_price: 1.5
-  late_ni: MyString
+  late_night?: MyString
