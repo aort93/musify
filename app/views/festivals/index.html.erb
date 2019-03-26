@@ -1,6 +1,9 @@
-
+<% if flash[:notice]%>
+  <%=flash[:notice]%>
+<%end%>
 
 <h1>Festivals</h1>
+
 
 <table>
   <thead>
@@ -25,6 +28,7 @@
         <td><%= festival.age_limit %></td>
         <td>$<%= festival.ticket_price %></td>
         <td><% if festival.late_night? %><%="Yes"%><%else%><%="No"%><%end%></td>
+        <td><%= button_to "Buy a Ticket for this Festival", ticket_create_path, {method: :post,  params: {id: festival.id, name: festival.brand} } %></td>
         <td><%= link_to 'Show', festival %></td>
         <td><%= link_to 'Edit', edit_festival_path(festival) %></td>
         <td><%= link_to 'Destroy', festival, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -36,3 +40,8 @@
 <br>
 
 <%= link_to "New", new_festival_path %>
+
+
+
+
+<hr>

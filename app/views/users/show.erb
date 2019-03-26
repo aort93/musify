@@ -1,11 +1,17 @@
+<% if flash[:notice]%>
+  <%=flash[:notice]%>
+<%end%>
+
 <h1><%= @user.name %>'s Page</h1>
 
-<%= button_to "View All Festivals", "/festivals", method: :get %>
+
 
 <ol>
-<% @user.festivals.each do|festival| %>
-  <li><img src="<%= festival.image %>"<br>
-    <%= festival.brand %>
+<% @user.tickets.each do|ticket| %>
+  <li><img src="<%= ticket.festival.image %>"<br>
+    <%= ticket.festival.brand %>
+    <%= " $".concat(ticket.festival.ticket_price.to_s) %>
+    <%= button_to "Get a Refund", "/tickets/#{ticket.id}", method: :delete%>
   </li>
     <br>
   <% end %>
