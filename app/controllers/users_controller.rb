@@ -18,8 +18,8 @@ class UsersController < ApplicationController
   def destroy # DELETE request /users/:id
     @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = 'You FESLY account has been deleted'
-    redirect_to signup_path
+    redirect_to login_path
+    flash[:notice] = 'Your FESTLY account has been deleted'
   end
 
 
