@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :venues
   resources :users
 
+  get "/", to: "festivals#landing", as: "landing"
 
   get "/signup", to: "users#new", as: "signup"
   get "/login", to: "sessions#new", as: "login"

@@ -3,6 +3,11 @@ class FestivalsController < ApplicationController
 
   # GET /festivals
   # GET /festivals.json
+
+  def landing
+    render :landing
+  end
+
   def index
     @festivals = Festival.all
   end
