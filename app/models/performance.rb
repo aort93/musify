@@ -2,6 +2,14 @@ class Performance < ApplicationRecord
   belongs_to :festival
   belongs_to :artist
 
+
+  validates_uniqueness_of :festival_id, :scope => :artist_id
+  validates_uniqueness_of :artist_id, :scope => :festival_id
+  validates :festival_id, :artist_id, :tier,  presence: true
+  validates :tier, :inclusion => 1..3
+
+
+
   def self.artist_with_most_performances
     artist_array = self.all.map do |performance|
       performance.artist

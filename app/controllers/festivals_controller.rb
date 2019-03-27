@@ -29,17 +29,25 @@ class FestivalsController < ApplicationController
   # POST /festivals
   # POST /festivals.json
   def create
-    @festival = Festival.new(festival_params)
-
-    respond_to do |format|
-      if @festival.save
-        format.html { redirect_to @festival, notice: 'Festival was successfully created.' }
-        format.json { render :show, status: :created, location: @festival }
-      else
-        format.html { render :new }
-        format.json { render json: @festival.errors, status: :unprocessable_entity }
-      end
+    @festival = Festival.create(festival_params)
+    if @festival.valid?
+      redirect_to @festival
+    else
+      flash[:errors] = @festival.errors.full_messages
+      redirect_to new_festival_path
     end
+
+
+
+    # respond_to do |format|
+    #   if @festival.save
+    #     format.html { redirect_to @festival, notice: 'Festival was successfully created.' }
+    #     format.json { render :show, status: :created, location: @festival }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @festival.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /festivals/1

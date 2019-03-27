@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy", as: "logout"
   post "/tickets", to: "tickets#create", as: "ticket_create"
   delete "/tickets/:id", to: "tickets#destroy"
+  post "/performances", to: "performances#create"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
