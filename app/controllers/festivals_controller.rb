@@ -1,11 +1,10 @@
 class FestivalsController < ApplicationController
   before_action :set_festival, only: [:show, :edit, :update, :destroy]
-
+  layout 'landing', only: :landing
   # GET /festivals
   # GET /festivals.json
 
   def landing
-    render :landing
   end
 
   def index
