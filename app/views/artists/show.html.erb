@@ -1,7 +1,12 @@
-<h1>This is the page for the Legendary <%=@artist.genre %> Artist, <%=@artist.name%>!</h1>
+<h1>This is the page for <%=@artist.name%></h1>
 
-<img src="<%= @artist.image %>">
-
+<img src="<%= @artist.image %>"><br>
+Genre: <%=@artist.genre %> <br>
+Description: <%=@artist.description %><br>
+Festival Performances:
+<%@artist.festivals.each do |festival| %>
+<li><%="#{festival.brand} #{festival.year}" %></li>
+<%end%>
 
 
 <%if @artist.id != Artist.first.id%>

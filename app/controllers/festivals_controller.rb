@@ -14,6 +14,7 @@ class FestivalsController < ApplicationController
   # GET /festivals/1
   # GET /festivals/1.json
   def show
+    @artists=Artist.all
   end
 
   # GET /festivals/new

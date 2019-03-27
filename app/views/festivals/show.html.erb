@@ -20,6 +20,7 @@
 </p>
 
 
+
 <p>
   <strong>Description:</strong>
   <%= @festival.description %>
@@ -51,8 +52,17 @@
 
 <div>
   <ul>
-  <%@festival.artist_ranker.each do |artist_name|%>
-  <li><%=artist_name%></li>
+  <%@festival.artist_ranker.uniq.each do |artist_name|%>
+  <li><%=link_to artist_name, @artists.find_by(name: artist_name)%></li>
   <%end%>
   </ul>
 </div>
+
+
+<%if @festival.id != Festival.first.id%>
+<%= button_to "Previous Festival", "/festivals/#{@festival.id-1}", method: :get%>
+<%end%>
+
+<%if @festival.id != Festival.last.id%>
+<%= button_to "Next Festival", "/festivals/#{@festival.id+1}", method: :get%>
+<%end%>

@@ -11,3 +11,11 @@
   <h3>Number of Performances Hosted: </h3>
 
   <%= @venue.total_performances_hosted %>
+
+  <%if @venue.id != Venue.first.id%>
+  <%= button_to "Previous Venue", "/venues/#{@venue.id-1}", method: :get%>
+  <%end%>
+
+  <%if @venue.id != Venue.last.id%>
+  <%= button_to "Next Venue", "/venues/#{@venue.id+1}", method: :get%>
+  <%end%>

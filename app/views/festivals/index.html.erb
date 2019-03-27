@@ -6,46 +6,33 @@
   <%=flash[:notice]%>
 <%end%>
 
-<h1>Festivals</h1>
+<div class="container">
+
+  <header class="jumbotron">
+           <div class="container">
+               <h1>Welcome To Festly!</h1>
+               <p>View the best music festivals from all over the U.S.</p>
+               <p>
+                  <a class="btn btn-primary btn-large" href="/festivals/new">Add New Festival</a>
+               </p>
+           </div>
+  </header>
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Brand</th>
-      <th>Year</th>
-      <th>Description</th>
-      <th>Age limit</th>
-      <th>Ticket price</th>
-      <th>Late night?</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
     <% @festivals.each do |festival| %>
-      <tr>
-        <td><%= festival.brand %></td>
-        <td><%= festival.year %></td>
-        <td><%= festival.description %></td>
-        <td><img src="<%= festival.image %>"></td>
-        <td><%= festival.age_limit %></td>
-        <td>$<%= festival.ticket_price %></td>
-        <td><% if festival.late_night? %><%="Yes"%><%else%><%="No"%><%end%></td>
-        <td><%= button_to "Buy a Ticket for this Festival", ticket_create_path, {method: :post,  params: {id: festival.id, name: festival.brand} } %></td>
-        <td><%= link_to 'Show', festival %></td>
-        <td><%= link_to 'Edit', edit_festival_path(festival) %></td>
-        <td><%= link_to 'Destroy', festival, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-md-4 col-sm-6">
+        <div class="thumbnail">
+          <img src="<%= festival.image %>">
+          <div class="caption">
+            <h4><%= festival.brand %> <br><%= festival.year %></h4>
+          </div>
+          <p>
+            <%= link_to 'Show', festival, class: "btn btn-primary" %>
+          </p>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
-
-<%= link_to "New", new_festival_path %>
-
-
-
-
-<hr>
+</div>
