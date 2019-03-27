@@ -1,0 +1,13 @@
+<h1>This is the page for <%=@venue.name%> in the Beautiful State of <%=@venue.state%></h1>
+
+<img src="<%= @venue.image %>"></td>
+
+  <h3>Festivals Hosting: </h3>
+
+  <%@venue.festivals.each do |festival|%>
+    <li><%=festival.brand%></li>
+  <%end%>
+
+  <h3>Number of Performances Hosted: </h3>
+
+  <%= @venue.total_performances_hosted %>

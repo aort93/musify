@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+
+
+
+<% if flash[:notice]%>
+  <span style="color:red"><li><%=flash[:notice]%></li></span>
+<%end%>
 
 <h1>Login Page</h1>
 
