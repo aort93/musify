@@ -1,0 +1,39 @@
+<h1>Analytics Page</h1>
+
+<h3>Amount of Festly Users</h3>
+<p><%= @users.length %></p><br>
+
+<h3>Total Festivals</h3>
+<p><%= @festivals.length %></p><br>
+
+<h3>Total Tickets Sold</h3>
+<p><%= @tickets.length %></p><br>
+
+
+
+<h3>Total in Sales</h3>
+$<%=@tickets.total_ticket_sales%>
+
+
+<h3>Total Performances</h3>
+<p><%= @performances.length %></p><br>
+
+
+<h3>Most Popular Festival by Tickets Sold</h3>
+<%=@tickets.most_popular_festival_by_ticket_sales.brand%>
+
+<h4>Number of Tickets Sold: </h4>
+<%=@tickets.number_of_tickets_sold_by_most_popular_festival%>
+
+<h4>Total in Ticket Sales of Most Popular Festival</h4>
+<%=@tickets.total_in_sales_raised_by_most_popular_festival%>
+
+<h4>Number of Peformances:</h4>
+<%=@performances.number_of_performances_by_artist_with_most_performances%>
+
+<h3>Artist With Most Tier 1 Performances</h3>
+
+<%=@performances.artist_with_most_tier_one_performances.name%>
+
+<h4>Number of Tier 1 Performances by Artist</h4>
+<%=@performances.number_of_performances_by_artist_with_most_tier_one_performances%>

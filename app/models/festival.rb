@@ -15,4 +15,6 @@ class Festival < ApplicationRecord
     end
   end
 
+
+
 end

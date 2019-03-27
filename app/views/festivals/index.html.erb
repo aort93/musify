@@ -12,9 +12,11 @@
            <div class="container">
                <h1>Welcome To Festly!</h1>
                <p>View the best music festivals from all over the U.S.</p>
+              <% if @user && @user.admin?%>
                <p>
                   <a class="btn btn-primary btn-large" href="/festivals/new">Add New Festival</a>
                </p>
+               <%end%>
            </div>
   </header>
 

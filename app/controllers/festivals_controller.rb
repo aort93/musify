@@ -66,6 +66,16 @@ class FestivalsController < ApplicationController
     end
   end
 
+  def analytics
+    @users = User.all
+    @artists = Artist.all
+    @venues = Venue.all
+    @tickets = Ticket.all
+    @festivals = Festival.all
+    @performances = Performance.all
+    render :analytics
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_festival
