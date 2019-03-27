@@ -1,13 +1,13 @@
 <% if flash[:notice]%>
-  <%=flash[:notice]%>
+  <span style="color:red"><%=flash[:notice]%></span>
 <%end%>
 
-<h1><%= @user.name %>'s Page</h1>
+<h1><%= @user1.name %>'s Page</h1>
 
 
-<h3><%= @user.name %>'s Tickets: </h3>
+<h3><%= @user1.name %>'s Tickets: </h3>
 <ol>
-<% @user.tickets.each do|ticket| %>
+<% @user1.tickets.each do|ticket| %>
   <li><img src="<%= ticket.festival.image %>"<br>
     <%= ticket.festival.brand %>
     <%= " $".concat(ticket.festival.ticket_price.to_s) %>
@@ -18,8 +18,8 @@
 </ol>
 
 <%= button_to "Logout", logout_path, method: :delete %>
-<%= button_to "Delete My Account", "/users/#{@user.id}", method: :delete %>
+<%= button_to "Delete My Account", "/users/#{@user1.id}", method: :delete %>
 
-Number of Tickets: <%=@user.ticket_count%>
-Total Spent: $<%=@user.ticket_total%>
-Number of Performances Coming Up: <%=@user.performance_total%>
+Number of Tickets: <%=@user1.ticket_count%>
+Total Spent: $<%=@user1.ticket_total%>
+Number of Performances Coming Up: <%=@user1.performance_total%>

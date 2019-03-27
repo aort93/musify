@@ -2,7 +2,13 @@ class UsersController < ApplicationController
   # skip_before_action :authorized, only: [:new, :create]
 
   def show
-    @user = User.find(params[:id])
+    @user1 = User.find(params[:id])
+    if logged_in? && current_user == @user1
+      render :show
+    else
+      flash[:errors] = "This page is for another user's account."
+      redirect_to festivals_path
+    end
   end
 
   def new
@@ -11,13 +17,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.valid?
     session[:user_id] = @user.id
     redirect_to @user
-    else
-    flash[:errors] = @user.errors.full_messages
-    redirect_to signup_path
-    end
   end
 
   def destroy # DELETE request /users/:id

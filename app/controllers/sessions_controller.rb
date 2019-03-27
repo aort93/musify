@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
 
   def new
-
+    if logged_in?
+      flash[:notice] = "You are already logged in as #{@user.user_name}."
+      redirect_to @user
+    end
   end
 
   def create
