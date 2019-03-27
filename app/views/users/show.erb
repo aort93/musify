@@ -5,7 +5,7 @@
 <h1><%= @user.name %>'s Page</h1>
 
 
-
+<h3><%= @user.name %>'s Tickets: </h3>
 <ol>
 <% @user.tickets.each do|ticket| %>
   <li><img src="<%= ticket.festival.image %>"<br>
@@ -19,3 +19,7 @@
 
 <%= button_to "Logout", logout_path, method: :delete %>
 <%= button_to "Delete My Account", "/users/#{@user.id}", method: :delete %>
+
+Number of Tickets: <%=@user.ticket_count%>
+Total Spent: $<%=@user.ticket_total%>
+Number of Performances Coming Up: <%=@user.performance_total%>

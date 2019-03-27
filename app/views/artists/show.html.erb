@@ -1,0 +1,13 @@
+<h1>This is the page for the Legendary <%=@artist.genre %> Artist, <%=@artist.name%>!</h1>
+
+<img src="<%= @artist.image %>">
+
+
+
+<%if @artist.id != Artist.first.id%>
+<%= button_to "Previous Artist", "/artists/#{@artist.id-1}", method: :get%>
+<%end%>
+
+<%if @artist.id != Artist.last.id%>
+<%= button_to "Next Artist", "/artists/#{@artist.id+1}", method: :get%>
+<%end%>

@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id) # or session[:user_id] = nil
-    flash[:msg]= "Logged out of Festly"
+    flash[:notice]= "Logged out of Festly"
     redirect_to login_path
   end
 
