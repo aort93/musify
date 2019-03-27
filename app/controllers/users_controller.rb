@@ -11,8 +11,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    if @user.valid?
     session[:user_id] = @user.id
     redirect_to @user
+    else
+    flash[:errors] = @user.errors.full_messages
+    redirect_to signup_path
+    end
   end
 
   def destroy # DELETE request /users/:id
@@ -26,6 +31,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:user_name, :password, :name, :age)
+      params.require(:user).permit(:user_name, :password, :password_confirmation, :name, :age)
     end
 end

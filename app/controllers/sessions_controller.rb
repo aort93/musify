@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      flash[:error] = "Invalid username or password!"
+      flash[:notice] = "Invalid username or password!"
       redirect_to login_path
     end
   end
