@@ -81,7 +81,6 @@ class FestivalsController < ApplicationController
   end
 
   def analytics
-    byebug
     @users = User.all
     @artists = Artist.all
     @venues = Venue.all
