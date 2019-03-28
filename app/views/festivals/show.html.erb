@@ -1,85 +1,72 @@
 <div class="container">
-
-
   <p id="notice"><%= notice %></p>
-
   <div class="row">
-    <div class="col-md-12 text-center">
+    <div class="col-md-12">
       <div class="thumbnail">
-        <ul class="pager">
-          <%if @festival.id != Festival.first.id%>
-          <li><%= button_to "Previous Festival", "/festivals/#{@festival.id-1}", method: :get%></li>
-          <%end%>
-        </ul>
-
-
-        <h1>
+        <h1 class = "text-center">
           <%= "#{@festival.brand}  #{@festival.year}" %>
         </h1>
+        <img class = 'img-responsive festival-show-img' src="<%= @festival.image %>"><br>
 
-        <ul class="pager">
-          <%if @festival.id != Festival.last.id%>
-          <li><%= button_to "Next Festival", "/festivals/#{@festival.id+1}", method: :get%></li>
-          <%end%>
-        </ul>
-
-
-        <img class = 'img-responsive festival-show-img' src="<%= @festival.image %>">
-
-        <%= button_to "Buy a Ticket for this Festival", ticket_create_path, {method: :post,  params: {id: @festival.id, name: @festival.brand} } %>
+        <%= button_to "Buy a Ticket for this Festival", ticket_create_path, {method: :post,  params: {id: @festival.id, name: @festival.brand}, :class => "btn btn-info btn-sm center-block" }%>
 
       </div>
+
+      <div class="well">
+        <p>
+          <strong>Venues:</strong>
+          <ul>
+          <% @festival.venues.uniq.each do |venue| %>
+            <li><%=link_to venue.name.concat(", ").concat(venue.state), venue%></li><br>
+          <%end%>
+          </ul>
+        </p>
+
+
+
+        <p>
+          <strong>Description:</strong>
+          <%= @festival.description %>
+        </p>
+
+
+
+        <p>
+          <strong>Age limit:</strong>
+          <%= @festival.age_limit %>
+        </p>
+
+        <p>
+          <strong>Ticket price:</strong>
+          $<%= @festival.ticket_price %>
+        </p>
+
+        <p style= "display: inline">
+          <strong>Late night?:</strong></p>
+          <% if @festival.late_night? %>
+            <p style= "display: inline">Yes</p>
+          <% else %>
+            <p style= "display: inline">No</p>
+          <% end  %>
+
+          <br>
+        <%= link_to 'Edit', edit_festival_path(@festival) %> |
+        <%= link_to 'Back', festivals_path %>
+
+        <div>
+          <ul>
+          <%@festival.artist_ranker.uniq.each do |artist_name|%>
+          <li><%=link_to artist_name, @artists.find_by(name: artist_name)%></li>
+          <%end%>
+          </ul>
+        </div>
+      </div>
+
 
     </div>
 
   </div>
 
 
-  <p>
-    <strong>Venues:</strong>
-    <ul>
-    <% @festival.venues.uniq.each do |venue| %>
-      <li><%=link_to venue.name.concat(", ").concat(venue.state), venue%></li><br>
-    <%end%>
-    </ul>
-  </p>
 
-
-
-  <p>
-    <strong>Description:</strong>
-    <%= @festival.description %>
-  </p>
-
-
-
-  <p>
-    <strong>Age limit:</strong>
-    <%= @festival.age_limit %>
-  </p>
-
-  <p>
-    <strong>Ticket price:</strong>
-    $<%= @festival.ticket_price %>
-  </p>
-
-  <p style= "display: inline">
-    <strong>Late night?:</strong>
-    <% if @festival.late_night? %>
-      <p style= "display: inline">Yes</p>
-    <% else %>
-      <p style= "display: inline">No</p>
-    <% end  %>
-
-
-  <%= link_to 'Edit', edit_festival_path(@festival) %> |
-  <%= link_to 'Back', festivals_path %>
-
-  <div>
-    <ul>
-    <%@festival.artist_ranker.uniq.each do |artist_name|%>
-    <li><%=link_to artist_name, @artists.find_by(name: artist_name)%></li>
-    <%end%>
-    </ul>
-  </div>
 </div>

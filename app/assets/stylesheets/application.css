@@ -59,3 +59,8 @@ body { padding-top: 70px; }
   max-height:320px;
   max-width:400px;
 }
+
+
+ul {
+  list-style-type: none;
+}
