@@ -35,3 +35,27 @@ body { padding-top: 70px; }
  margin-left: 45%;
   margin-bottom:0.75em;
 }
+
+.venue-image {
+  width: 300px;
+}
+
+.artist-image {
+  width: 100%;
+  min-height: 150px;
+}
+
+
+.artists-table p {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.btn {
+  color:white !important;
+}
+
+.festival-show-img {
+  max-height:320px;
+  max-width:400px;
+}

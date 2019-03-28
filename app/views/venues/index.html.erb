@@ -1,8 +1,9 @@
 <h1>Venues</h1>
 
-<table>
+<table class ='table table-striped'>
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>State</th>
       <th>Capacity</th>
@@ -13,15 +14,17 @@
   <tbody>
     <% @venues.each do |venue| %>
       <tr>
-        <td><img src="<%= venue.image %>"></td>
+        <td><img class = "venue-image" src="<%= venue.image %>"></td>
         <td><%= link_to venue.name, venue %></td>
         <td><%= venue.state %></td>
         <td><%= venue.venue_capacity %></td>
-        <td><%= link_to 'See Venue', venue %></td>
-        <%if @user && @user.admin?%>
-        <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
-        <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
+        <td>
+          <%= link_to 'See Venue', venue, :class => "btn btn-success btn-sm" %><br><br>
+          <%if @user && @user.admin?%>
+            <%= link_to 'Edit', edit_venue_path(venue), :class => "btn btn-info btn-sm" %><br><br>
+            <%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm" %>
+          <%end%>
+        </td>
       </tr>
     <% end %>
   </tbody>

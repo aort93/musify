@@ -1,27 +1,30 @@
-<h1>Artists</h1>
+<h1 style="text-align:center">Festly Artists</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Genre</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
+<table class = 'table table-striped artists-table'>
+    <thead>
+      <tr>
+        <th></th>
+        <th style="text-align:center">Name</th>
+        <th style="text-align:center">Genre</th>
+        <th style="text-align:center">Description</th>
+        <th colspan="3"></th>
+      </tr>
   </thead>
 
-  <tbody>
+  <tbody >
     <% @artists.each do |artist| %>
       <tr>
-        <td><img src="<%= artist.image %>"></td>
-        <td><%= artist.name %></td>
-        <td><%= artist.genre %></td>
-        <td><%= artist.description %></td>
-        <td><%= link_to 'See Artist', artist %></td>
-        <%if @user && @user.admin?%>
-        <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-        <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
+        <td><img class="artist-image img-responsive" src="<%= artist.image %>"></td>
+        <td><p><%= link_to artist.name, artist %><p></td>
+        <td><p><%= artist.genre %><p></td>
+        <td><p><%= artist.description %></p></td>
+        <td>
+          <%= link_to 'See Artist', artist, :class => "btn btn-success btn-sm"  %><br><br>
+          <%if @user && @user.admin?%>
+            <%= link_to 'Edit', edit_artist_path(artist), :class => "btn btn-info btn-sm"  %><br><br>
+            <%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm" %>
+          <%end%>
+        </td>
       </tr>
     <% end %>
   </tbody>
