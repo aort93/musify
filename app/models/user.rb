@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :festivals, through: :tickets
 
   validates :user_name, :name, :age, presence: true
+  validates :user_name, uniqueness: true
   validates :age, numericality: { greater_than_or_equal_to: 18 }
 
   def ticket_count

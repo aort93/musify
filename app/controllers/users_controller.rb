@@ -17,8 +17,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    if @user.valid?
     session[:user_id] = @user.id
     redirect_to @user
+    else
+      flash[:errors] = @user.errors.full_messages
+      redirect_to "/signup"
+    end
   end
 
   def destroy # DELETE request /users/:id
