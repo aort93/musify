@@ -19,3 +19,19 @@
 
 
 body { padding-top: 70px; }
+
+
+#form-center {
+  width: 70%;
+
+}
+
+#form-mid {
+  margin-left: 30%;
+
+}
+
+#our-padding {
+ margin-left: 45%;
+  margin-bottom:0.75em;
+}

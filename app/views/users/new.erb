@@ -1,24 +1,25 @@
 <%if flash[:errors]%>
 <ul>
   <% flash[:errors].each do |err|%>
-  <span, style="color:red"><li><%= err%></li></span>
+    <span style="color:red"><li><%= err%></li></span>
   <%end%>
   </ul>
 <%end%>
 
 
-<h1>Sign Up!</h1>
-
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :age %>
-  <%= f.number_field :age %>
-  <%= f.label :user_name %>
-  <%= f.text_field :user_name %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+    <h1 class = "form-signin-heading" id = "our-padding">Sign Up!</h1>
+    <%= form_for @user, :html => {:class => "form-signin", :id =>"form-mid"} do |f| %>
+      <%= f.label :name, class: 'sr-only'%>
+      <%= f.text_field :name, class: 'form-control', id: 'form-center', placeholder: "Name" %><br>
+      <%= f.label :age, class: 'sr-only' %>
+      <%= f.number_field :age, class: 'form-control form-center',id: 'form-center', placeholder: "Age" %><br>
+      <%= f.label :user_name, class: 'sr-only' %>
+      <%= f.text_field :user_name, class: 'form-control form-center', id: 'form-center', placeholder: "UserName" %><br>
+      <%= f.label :password , class: 'sr-only'%>
+      <%= f.password_field :password , class: 'form-control form-center', id: 'form-center', placeholder: "Password"%><br>
+      <%= f.label :password_confirmation , class: 'sr-only'%>
+      <%= f.password_field :password_confirmation, class: 'form-control form-center', id: 'form-center', placeholder: "Password Confirmation" %><br>
+      <%= f.submit 'Create User', :class => 'btn btn-small btn-primary btn-block', :id => 'form-center'%>
+    <% end %>
+</div>
