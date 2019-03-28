@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
 
   def new
-
+    if logged_in?
+      flash[:notice] = "You are already logged in as #{@user.user_name}."
+      redirect_to @user
+    end
   end
 
   def create
@@ -10,14 +13,14 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      flash[:error] = "Invalid username or password!"
+      flash[:notice] = "Invalid username or password!"
       redirect_to login_path
     end
   end
 
   def destroy
     session.delete(:user_id) # or session[:user_id] = nil
-    flash[:msg]= "Logged out of Festly"
+    flash[:notice]= "Logged out of Festly"
     redirect_to login_path
   end
 

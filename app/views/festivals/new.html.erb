@@ -1,5 +1,24 @@
-<h1>New Festival</h1>
 
-<%= render 'form', festival: @festival %>
+<% if flash[:errors]%>
+<ul>
+  <%flash[:errors].each do |err|%>
 
-<%= link_to 'Back', festivals_path %>
+  
+  <span style="color:red"><li><%=err%></li></span>
+  <%end%>
+<%end%>
+</ul>
+
+<div class="container">
+  <div class="row">
+    <h1 style="text-align: center">Create a New Festival</h1>
+    <%= render 'form', festival: @festival %>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <p style="text-align: center"><%= link_to 'Back', festivals_path, {:class => "btn btn-default btn-xs"} %></p>
+  </div>
+</div>

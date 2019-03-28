@@ -1,11 +1,10 @@
 class FestivalsController < ApplicationController
   before_action :set_festival, only: [:show, :edit, :update, :destroy]
-
+  layout 'landing', only: :landing
   # GET /festivals
   # GET /festivals.json
 
   def landing
-    render :landing
   end
 
   def index
@@ -15,6 +14,7 @@ class FestivalsController < ApplicationController
   # GET /festivals/1
   # GET /festivals/1.json
   def show
+    @artists=Artist.all
   end
 
   # GET /festivals/new
@@ -24,22 +24,36 @@ class FestivalsController < ApplicationController
 
   # GET /festivals/1/edit
   def edit
+    if @user && @user.admin?
+      render :edit
+    else
+      flash[:errors] = "This page is for another user's account."
+      redirect_to festivals_path
+    end
   end
 
   # POST /festivals
   # POST /festivals.json
   def create
-    @festival = Festival.new(festival_params)
-
-    respond_to do |format|
-      if @festival.save
-        format.html { redirect_to @festival, notice: 'Festival was successfully created.' }
-        format.json { render :show, status: :created, location: @festival }
-      else
-        format.html { render :new }
-        format.json { render json: @festival.errors, status: :unprocessable_entity }
-      end
+    @festival = Festival.create(festival_params)
+    if @festival.valid?
+      redirect_to @festival
+    else
+      flash[:errors] = @festival.errors.full_messages
+      redirect_to new_festival_path
     end
+
+
+
+    # respond_to do |format|
+    #   if @festival.save
+    #     format.html { redirect_to @festival, notice: 'Festival was successfully created.' }
+    #     format.json { render :show, status: :created, location: @festival }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @festival.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /festivals/1
@@ -64,6 +78,17 @@ class FestivalsController < ApplicationController
       format.html { redirect_to festivals_url, notice: 'Festival was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def analytics
+    byebug
+    @users = User.all
+    @artists = Artist.all
+    @venues = Venue.all
+    @tickets = Ticket.all
+    @festivals = Festival.all
+    @performances = Performance.all
+    render :analytics
   end
 
   private

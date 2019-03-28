@@ -1,3 +1,12 @@
+<%if flash[:errors]%>
+<ul>
+  <% flash[:errors].each do |err|%>
+  <span, style="color:red"><li><%= err%></li></span>
+  <%end%>
+  </ul>
+<%end%>
+
+
 <h1>Sign Up!</h1>
 
 <%= form_for @user do |f| %>

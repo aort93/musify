@@ -1,0 +1,42 @@
+<% if flash[:errors]%>
+<ul>
+  <%flash[:errors].each do |err|%>
+  <span style="color:red"><li><%=err%></li></span>
+  <%end%>
+<%end%>
+</ul>
+
+
+<h1>This is the page for <%=@artist.name%></h1>
+
+<img src="<%= @artist.image %>"><br>
+Genre: <%=@artist.genre %> <br>
+Description: <%=@artist.description %><br>
+Festival Performances:
+<%@artist.festivals.each do |festival| %>
+<li><%="#{festival.brand} #{festival.year}"%></li>
+<%end%>
+
+
+<%if @user && @user.admin? %>
+  <h1>Book this Artist at a Festival</h1>
+
+  <%= form_for @performance do |f| %>
+    <%= f.collection_select(:festival_id, @festivals, :id, :brand, prompt: true)%>
+    <%= f.label "Tier"%>
+    <%= f.number_field :tier%>
+    <%= f.submit%>
+  <% end %>
+
+  <% flash[:artist_id] = @artist.id %>
+<%end%>
+
+
+
+<%if @artist.id != Artist.first.id%>
+<%= button_to "Previous Artist", "/artists/#{@artist.id-1}", method: :get%>
+<%end%>
+
+<%if @artist.id != Artist.last.id%>
+<%= button_to "Next Artist", "/artists/#{@artist.id+1}", method: :get%>
+<%end%>

@@ -14,12 +14,14 @@
     <% @venues.each do |venue| %>
       <tr>
         <td><img src="<%= venue.image %>"></td>
-        <td><%= venue.name %></td>
+        <td><%= link_to venue.name, venue %></td>
         <td><%= venue.state %></td>
         <td><%= venue.venue_capacity %></td>
-        <td><%= link_to 'Show', venue %></td>
+        <td><%= link_to 'See Venue', venue %></td>
+        <%if @user && @user.admin?%>
         <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
         <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>

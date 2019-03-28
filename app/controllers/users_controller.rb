@@ -2,7 +2,13 @@ class UsersController < ApplicationController
   # skip_before_action :authorized, only: [:new, :create]
 
   def show
-    @user = User.find(params[:id])
+    @user1 = User.find(params[:id])
+    if logged_in? && current_user == @user1
+      render :show
+    else
+      flash[:errors] = "This page is for another user's account."
+      redirect_to festivals_path
+    end
   end
 
   def new
@@ -26,6 +32,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:user_name, :password, :name, :age)
+      params.require(:user).permit(:user_name, :password, :password_confirmation, :name, :age)
     end
 end

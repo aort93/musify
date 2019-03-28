@@ -1,0 +1,46 @@
+<% if flash[:errors]%>
+<ul>
+  <%flash[:errors].each do |err|%>
+  <span style="color:red"><li><%=err%></li></span>
+  <%end%>
+<%end%>
+</ul>
+
+<% if flash[:notice]%>
+  <%=flash[:notice]%>
+<%end%>
+
+
+
+<h1>This is the page for <%=@venue.name%> in the Beautiful State of <%=@venue.state%></h1>
+
+<img src="<%= @venue.image %>">
+
+  <h3>Festivals Hosting: </h3>
+
+  <%@venue.festivals.uniq.each do |festival|%>
+    <li><%=festival.brand%></li>
+  <%end%>
+  
+ <%if @user && @user.admin? %>
+    <h3>Interested in Booking this Venue for a Festival?</h3>
+
+    <%= form_for @festival_venue do |f| %>
+      <%= f.collection_select(:festival_id, @festivals, :id, :brand, prompt: true)%>
+      <%= f.submit "Book Venue"%>
+    <% end %>
+
+    <% flash[:venue_id] = @venue.id %>
+<%end%>
+
+  <h3>Number of Performances Hosted: </h3>
+
+  <%= @venue.total_performances_hosted %>
+
+  <%if @venue.id != Venue.first.id%>
+  <%= button_to "Previous Venue", "/venues/#{@venue.id-1}", method: :get%>
+  <%end%>
+
+  <%if @venue.id != Venue.last.id%>
+  <%= button_to "Next Venue", "/venues/#{@venue.id+1}", method: :get%>
+  <%end%>
