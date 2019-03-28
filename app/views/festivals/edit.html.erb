@@ -1,6 +1,15 @@
-<h1>Editing Festival</h1>
+<div class="container">
+  <div class="row">
+    <h1 style="text-align: center">Edit Your Festival</h1>
+    <%= render 'form', festival: @festival %>
+  </div>
+</div>
 
-<%= render 'form', festival: @festival %>
-
-<%= link_to 'Show', @festival %> |
-<%= link_to 'Back', festivals_path %>
+<div class="container">
+  <div class="row">
+    <p style="text-align: center">
+      <%= link_to 'Show', @festival, {:class => "btn btn-default btn-xs"} %> |
+      <%= link_to 'Back', festivals_path, {:class => "btn btn-default btn-xs"} %>
+    </p>
+  </div>
+</div>
