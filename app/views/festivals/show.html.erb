@@ -13,10 +13,12 @@
 </p>
 
 <p>
-  <strong>Venue:</strong>
+  <strong>Venues:</strong>
+  <ul>
   <% @festival.venues.each do |venue| %>
-    <%=link_to venue.name.concat(", ").concat(venue.state), venue%>
+    <li><%=link_to venue.name.concat(", ").concat(venue.state), venue%></li><br>
   <%end%>
+  </ul>
 </p>
 
 

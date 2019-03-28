@@ -17,16 +17,19 @@ Festival Performances:
 <li><%="#{festival.brand} #{festival.year}"%></li>
 <%end%>
 
-<h1>Book this Artist at a Festival</h1>
 
-<%= form_for @performance do |f| %>
-  <%= f.collection_select(:festival_id, @festivals, :id, :brand, prompt: true)%>
-  <%= f.label "Tier"%>
-  <%= f.number_field :tier%>
-  <%= f.submit%>
-<% end %>
+<%if @user && @user.admin? %>
+  <h1>Book this Artist at a Festival</h1>
 
-<% flash[:hello] = @artist.id %>
+  <%= form_for @performance do |f| %>
+    <%= f.collection_select(:festival_id, @festivals, :id, :brand, prompt: true)%>
+    <%= f.label "Tier"%>
+    <%= f.number_field :tier%>
+    <%= f.submit%>
+  <% end %>
+
+  <% flash[:artist_id] = @artist.id %>
+<%end%>
 
 
 
