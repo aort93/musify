@@ -24,6 +24,12 @@ class FestivalsController < ApplicationController
 
   # GET /festivals/1/edit
   def edit
+    if @user && @user.admin?
+      render :edit
+    else
+      flash[:errors] = "This page is for another user's account."
+      redirect_to festivals_path
+    end
   end
 
   # POST /festivals
@@ -75,6 +81,7 @@ class FestivalsController < ApplicationController
   end
 
   def analytics
+    byebug
     @users = User.all
     @artists = Artist.all
     @venues = Venue.all
