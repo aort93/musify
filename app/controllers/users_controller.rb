@@ -2,11 +2,15 @@ class UsersController < ApplicationController
   # skip_before_action :authorized, only: [:new, :create]
 
   def show
-    @user1 = User.find(params[:id])
-    if logged_in? && current_user == @user1
-      render :show
+    if @user1 = User.find_by(id: params[:id])
+      if logged_in? && current_user == @user1
+        render :show
+      else
+        flash[:errors] = "This page is for another user's account."
+        redirect_to festivals_path
+      end
     else
-      flash[:errors] = "This page is for another user's account."
+      flash[:errors] = "That was not your user page!"
       redirect_to festivals_path
     end
   end

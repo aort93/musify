@@ -1,6 +1,9 @@
 
 <% if flash[:notice]%>
-  <span style="color:red"><li><%=flash[:notice]%></li></span>
+<ul>
+  <li class ="alert alert-info"><%=flash[:notice]%></li>
+</ul>
+
 <%end%>
 
 <h1>Login Page</h1>
