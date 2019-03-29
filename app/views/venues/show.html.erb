@@ -10,18 +10,38 @@
   <%=flash[:notice]%>
 <%end%>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="thumbnail">
 
 
-<h1>This is the page for <%=@venue.name%> in the Beautiful State of <%=@venue.state%></h1>
 
-<img src="<%= @venue.image %>">
+
+<h1 class="text-center"><%=@venue.name%></h1>
+
+
+
+
+<img class="venue-image-show img-responsive" src="<%= @venue.image %>"><br>
+    <%if @venue.id != Venue.first.id%>
+    <%= button_to "Previous Venue", "/venues/#{@venue.id-1}", method: :get, :class => "btn btn-info btn-sm center-block" %>
+    <%end%><br>
+
+    <%if @venue.id != Venue.last.id%>
+    <%= button_to "Next Venue", "/venues/#{@venue.id+1}", method: :get, :class => "btn btn-info btn-sm center-block"%><br>
+    <%end%>
+        </div>
+
+  <div class="well">
 
   <h3>Festivals Hosting: </h3>
-
+  <ul>
   <%@venue.festivals.uniq.each do |festival|%>
-    <li><%=festival.brand%></li>
+    <li><%=link_to festival.brand, festival%></li>
   <%end%>
-  
+  </ul>
+
  <%if @user && @user.admin? %>
     <h3>Interested in Booking this Venue for a Festival?</h3>
 
@@ -35,12 +55,11 @@
 
   <h3>Number of Performances Hosted: </h3>
 
-  <%= @venue.total_performances_hosted %>
+  <strong><%= @venue.total_performances_hosted %></strong>
 
-  <%if @venue.id != Venue.first.id%>
-  <%= button_to "Previous Venue", "/venues/#{@venue.id-1}", method: :get%>
-  <%end%>
 
-  <%if @venue.id != Venue.last.id%>
-  <%= button_to "Next Venue", "/venues/#{@venue.id+1}", method: :get%>
-  <%end%>
+
+        </div>
+      </div>
+    </div>
+  </div>

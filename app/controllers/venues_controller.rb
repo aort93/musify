@@ -12,4 +12,10 @@ class VenuesController < ApplicationController
     @venues = Venue.all
   end
 
+  def destroy
+    @venue = Venue.find(params[:id])
+    @venue.destroy
+    redirect_to venues_path
+  end
+
 end

@@ -13,8 +13,20 @@ body {
   color: #fff;
 }
 
+#welcome-background {
+  width:25em;
+  height:10em;
+  background: lightblue;
+  margin-left: 37em;
+  text-align: center;
+  border-radius: 1em;
+  padding: .25em;
+
+}
+
 #button-color {
   background-color: white;
+  color: lightblue !important;
 }
 
 .slideshow {

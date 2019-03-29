@@ -8,13 +8,22 @@
         </h1>
         <img class = 'img-responsive festival-show-img' src="<%= @festival.image %>"><br>
 
-        <%= button_to "Buy a Ticket for this Festival", ticket_create_path, {method: :post,  params: {id: @festival.id, name: @festival.brand}, :class => "btn btn-info btn-sm center-block" }%>
+
+        <span class="text-center"><%if @festival.id != Festival.first.id%>
+         <%= button_to "Previous Festival", "/festivals/#{@festival.id-1}", method: :get%>
+          <%end%></span><br>
+
+
+        <span class="text-center"><%if @festival.id != Festival.last.id%>
+        <%= button_to "Next Festival", "/festivals/#{@festival.id+1}", method: :get%>
+        <%end%></span><br>
+
 
       </div>
 
       <div class="well">
         <p>
-          <strong>Venues:</strong>
+          <h3><strong>Venues:</strong></h3>
           <ul>
           <% @festival.venues.uniq.each do |venue| %>
             <li><%=link_to venue.name.concat(", ").concat(venue.state), venue%></li><br>
@@ -24,8 +33,9 @@
 
 
 
+
         <p>
-          <strong>Description:</strong>
+          <h3><strong>Description:</strong></h3>
           <%= @festival.description %>
         </p>
 
@@ -49,16 +59,24 @@
             <p style= "display: inline">No</p>
           <% end  %>
 
-          <br>
-        <%= link_to 'Edit', edit_festival_path(@festival) %> |
-        <%= link_to 'Back', festivals_path %>
+          <br><br>
+        <%= link_to 'Edit', edit_festival_path(@festival), :class => "btn btn-success btn-sm" %> |
+        <%= link_to 'Back', festivals_path, :class => "btn btn-info btn-sm" %>
+
+        <br><br>
+
 
         <div>
+          <h4>Artist Line-Up</h4>
           <ul>
           <%@festival.artist_ranker.uniq.each do |artist_name|%>
           <li><%=link_to artist_name, @artists.find_by(name: artist_name)%></li>
           <%end%>
           </ul>
+
+          <%= button_to "Buy a Ticket for this Festival", ticket_create_path, {method: :post,  params: {id: @festival.id, name: @festival.brand}, :class => "btn btn-info btn-sm center-block" }%>
+
+
         </div>
       </div>
 

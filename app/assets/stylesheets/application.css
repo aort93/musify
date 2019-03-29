@@ -40,9 +40,29 @@ body { padding-top: 70px; }
   width: 300px;
 }
 
+.venue-image-show {
+  width: 650px;
+  max-height: 300px;
+}
+
 .artist-image {
   width: 100%;
   min-height: 150px;
+}
+
+.artist-image-show {
+  width: 350px;
+  max-height: 250px;
+}
+
+.user-show-image {
+  width:300px;
+}
+
+.user-show-footer {
+  background-color:lightgreen;
+  font-weight: 20px;
+  margin-bottom: -1000px;
 }
 
 
@@ -64,3 +84,18 @@ body { padding-top: 70px; }
 ul {
   list-style-type: none;
 }
+
+li {
+  ;
+}
+
+/* #button-color {
+  background-color: green !important;
+  color: white !important;
+}
+
+#welcome {
+  color: white !important;
+}
+
+ */

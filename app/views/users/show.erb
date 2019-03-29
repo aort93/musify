@@ -1,25 +1,43 @@
 <% if flash[:notice]%>
-  <span style="color:red"><%=flash[:notice]%></span>
+  <span style="color:green"><%=flash[:notice]%></span>
 <%end%>
 
-<h1><%= @user1.name %>'s Page</h1>
 
 
-<h3><%= @user1.name %>'s Tickets: </h3>
-<ol>
-<% @user1.tickets.each do|ticket| %>
-  <li><img src="<%= ticket.festival.image %>"<br>
-    <%= ticket.festival.brand %>
-    <%= " $".concat(ticket.festival.ticket_price.to_s) %>
-    <%= button_to "Get a Refund", "/tickets/#{ticket.id}", method: :delete%>
-  </li>
-    <br>
-  <% end %>
-</ol>
 
-<%= button_to "Logout", logout_path, method: :delete %>
-<%= button_to "Delete My Account", "/users/#{@user1.id}", method: :delete %>
+<h1><%= @user1.name.capitalize %>'s Page</h1>
 
-Number of Tickets: <%=@user1.ticket_count%>
-Total Spent: $<%=@user1.ticket_total%>
-Number of Performances Coming Up: <%=@user1.performance_total%>
+
+<h3><%= @user1.name.capitalize %>'s Tickets: </h3>
+
+<table class = 'table table-striped artists-table'>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Ticket Price</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  <tbody>
+      <ol>
+      <% @user1.tickets.each do|ticket| %>
+        <tr>
+        <td><img class="user-show-image img-responsive" src="<%= ticket.festival.image %>"</td>
+        <td><%= ticket.festival.brand %></td>
+          <td><%= " $".concat(ticket.festival.ticket_price.to_s) %></td>
+          <td><%= button_to "Get a Refund", "/tickets/#{ticket.id}", method: :delete%></td>
+          </tr>
+        <% end %>
+      </ol>
+    </tbody>
+  </table>
+
+
+<div class=" panel panel-success">
+  <h4>Number of Tickets: <%=@user1.ticket_count%> </h4>
+  <h4>Total Spent: $<%=@user1.ticket_total%></h4>
+  <h4>Number of Performances Coming Up: <%=@user1.performance_total%></h4>
+</div>
+
+<%= button_to "Delete My Account", "/users/#{@user1.id}", method: :delete,  :class => "btn btn-danger btn-sm center-block" %><br>

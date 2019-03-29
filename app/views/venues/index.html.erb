@@ -21,7 +21,6 @@
         <td>
           <%= link_to 'See Venue', venue, :class => "btn btn-success btn-sm" %><br><br>
           <%if @user && @user.admin?%>
-            <%= link_to 'Edit', edit_venue_path(venue), :class => "btn btn-info btn-sm" %><br><br>
             <%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm" %>
           <%end%>
         </td>
