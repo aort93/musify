@@ -10,12 +10,12 @@
 
 
         <span class="text-center"><%if @festival.id != Festival.first.id%>
-         <%= button_to "Previous Festival", "/festivals/#{@festival.id-1}", method: :get%>
+         <%= button_to "Previous Festival", "/festivals/#{@festival.id-1}", method: :get, :class => "btn btn-info btn-sm center-block"%>
           <%end%></span><br>
 
 
         <span class="text-center"><%if @festival.id != Festival.last.id%>
-        <%= button_to "Next Festival", "/festivals/#{@festival.id+1}", method: :get%>
+        <%= button_to "Next Festival", "/festivals/#{@festival.id+1}", method: :get, :class => "btn btn-info btn-sm center-block"%>
         <%end%></span><br>
 
 
@@ -60,7 +60,9 @@
           <% end  %>
 
           <br><br>
-        <%= link_to 'Edit', edit_festival_path(@festival), :class => "btn btn-success btn-sm" %> |
+        <%if @user && @user.admin?%>
+          <%= link_to 'Edit', edit_festival_path(@festival), :class => "btn btn-success btn-sm" %> |
+        <%end%>
         <%= link_to 'Back', festivals_path, :class => "btn btn-info btn-sm" %>
 
         <br><br>
